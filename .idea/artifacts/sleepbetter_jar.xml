@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="sleepbetter:jar">
+    <output-path>$PROJECT_DIR$/../dev-spigot-server/plugins</output-path>
+    <root id="archive" name="sleepbetter.jar">
+      <element id="module-output" name="sleepbetter" />
+    </root>
+  </artifact>
+</component>

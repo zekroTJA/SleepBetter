@@ -1,0 +1,8 @@
+name: SleepBetter
+version: ${project.version}
+main: de.zekro.sleepbetter.SleepBetter
+api-version: 1.13
+prefix: SleepBetter
+authors: [zekro]
+description: Sleep when a defined percentage of players is in bed
+website: zekro.de

@@ -1,0 +1,9 @@
+# Weather or not to enable the sleep-on-percentage function of this plugin
+enable:  true
+
+# How many players need to be in bed.
+# Example:
+#   0.5  -> 50% -> at least 5/10
+#   0.75 -> 75% -> at least 8/10
+#   and so on...
+part: 0.5
