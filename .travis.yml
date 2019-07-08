@@ -1,5 +1,14 @@
 language: java
 
 script:
-  - mvn package
+- mvn package
 
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: GbD3wtZKLEIl427bTJUtZINJTMONdDJE+wL5AbZTQZQyv04+uF5hamCxBO7tL5lTlG9y5tR8Rf33890Ae6wDPQl5JoiY52XB12uXsibNGowCdCOFGJdiVfNQkVIJtrsuOeGt95ym2W1BgFhGbAJWpusxRiUSKN1hXOJPXz6KUWXtXyfc6sehQhzF/aMmOBkuv7PvhgAzxNxebtZu9KmHgb4+AFrPqBbdHLcvoNCc1AA9IlO2wX2ANLwanKcT9hHin8IRhDVQkrTQP6N0nUXXolkoiiquRvcGXgRuVPeO29oWgagykofYjFOwnqDHetYei6HaLiMfDpya9TARkszxc4F+CPyIDkgP3f89QQ+xFJCsQfJmqQ7T47sF7DTyaEyw7b5Ca0Fctxr3nhxI3cbH7WyYeWAVxh0SfgNLPttSvt6YnbkUfDBv9Swouz5xNMwxAyK+myjs3hu5wOKTf9TavHmKjOWN059Lk7Oc5OZWdZ3NuKVgw188Vzh5cYiD2aONlygqohXhB+L9I2iIfBPsE221BhNBAZqAcS4aIEyDW00bx2ZZKaCBYd821WvtCqyICpA7Ea8p7n5Dv2AbSH5jjUb3LY6w2hCiaEqHYCe0NguAsYtfGFlW3rzGctApKIhhBtMzISgM1xEaw9fG4FcAJkVDzadDYpRweTvRSLf7YHM=
+  file: 
+    - target/sleepbetter-*.jar
+  on:
+    tags: true
