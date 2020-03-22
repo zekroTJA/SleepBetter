@@ -20,6 +20,10 @@ enable:  true
 #   0.75 -> 75% -> at least 8/10
 #   and so on...
 part: 0.5
+
+# How many players needs to be on the server until
+# SleepBetter enables.
+requiredPlayerCount: 2
 ```
 
 ## Inspiration
