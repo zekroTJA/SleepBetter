@@ -8,9 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="886f3502-a163-476c-92f1-cbbfb6ad600b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/zekro/sleepbetter/listeners/SleepListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/zekro/sleepbetter/listeners/SleepListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +41,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -61,7 +58,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JAR Application.Spigot Test Server">
+  <component name="RunManager" selected="Maven.sleepbetter build">
     <configuration name="Spigot Test Server" type="JarApplication">
       <option name="JAR_PATH" value="$PROJECT_DIR$/../dev-spigot-server/spigot-1.14.2.jar" />
       <option name="WORKING_DIRECTORY" value="E:\dev\dev-spigot-server" />
@@ -121,16 +118,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/de/zekro/sleepbetter/listeners/SleepListener.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
