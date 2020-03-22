@@ -32,5 +32,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: 'hub release create
           -a ./target/sleepbetter-*.jar
-          -m "${{ github.ref }}"
-          ${{ github.ref }}'
+          -m "$(git describe --tags --abbrev=0)"
+          $(git describe --tags --abbrev=0)'
