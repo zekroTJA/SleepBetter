@@ -10,12 +10,12 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 
 public class SleepListener implements Listener {
 
-    private final int REQUIRED_PLAYER_COUNT = 1;
+    private final int REQUIRED_PLAYER_COUNT = 2;
 
     private SleepBetter plugin;
     private double sleepPart;
-
     private int playersInBed;
+    private boolean showWakeupMessage = true;
 
     public SleepListener(SleepBetter plugin) {
         this.plugin = plugin;
@@ -48,7 +48,6 @@ public class SleepListener implements Listener {
 
         int playersInBedNeeded = getPlayersInBedNeeded(world);
 
-
         world.getPlayers().forEach(p ->
             p.sendMessage(String.format("%d/%d players in bed to sleep",
                 this.playersInBed, playersInBedNeeded)));
@@ -56,21 +55,33 @@ public class SleepListener implements Listener {
         if (playersInBedNeeded < this.playersInBed)
             return;
 
-        this.plugin.getServer().getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
-            @Override
-            public void run() {
-                if (playersInBed < playersInBedNeeded)
-                    return;
+        this.plugin.getServer().getScheduler().scheduleSyncDelayedTask(this.plugin, () -> {
+            if (playersInBed < playersInBedNeeded)
+                return;
 
-                world.setTime(23450);
-                if (world.isThundering()) {
-                    world.setThundering(false);
-                    world.setStorm(false);
-                }
+            // This part disables showing the wakeup message which is expected
+            // not to be shown after successful sleep. After 20 ticks (1 sec),
+            // wake up messages are re-enabled.
+            this.showWakeupMessage = false;
+            this.plugin.getServer().getScheduler().scheduleSyncDelayedTask(this.plugin, () -> {
+                this.showWakeupMessage = true;
+            }, 20L);
 
-                if (player.isSleeping())
-                    player.wakeup(true);
-            }
+            // Add time until it's day.
+            world.setTime(23450);
+            // Disable storm if storm.
+            if (world.hasStorm())
+                world.setStorm(false);
+            // Disable thunder if thunder.
+            if (world.isThundering())
+                world.setThundering(false);
+            // Disable rain if rain.
+            if (world.getWeatherDuration() > 0)
+                world.setWeatherDuration(0);
+
+            // Wake up player if still in bed.
+            if (player.isSleeping())
+                player.wakeup(true);
         }, 4 * 20L);
     }
 
@@ -82,8 +93,10 @@ public class SleepListener implements Listener {
         if (world.getPlayers().size() < REQUIRED_PLAYER_COUNT)
             return;
 
-        world.getPlayers().forEach(p ->
-            p.sendMessage(String.format("%d/%d players in bed to sleep",
-                this.playersInBed, this.getPlayersInBedNeeded(world))));
+        if (this.showWakeupMessage) {
+            world.getPlayers().forEach(p ->
+                p.sendMessage(String.format("%d/%d players in bed to sleep",
+                    this.playersInBed, this.getPlayersInBedNeeded(world))));
+        }
     }
 }

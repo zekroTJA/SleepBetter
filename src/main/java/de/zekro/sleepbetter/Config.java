@@ -26,13 +26,6 @@ public class Config extends JavaPlugin {
         this.config.setDefaults(defConfig);
     }
 
-    public FileConfiguration CustomConfig() {
-        if (this.config == null)
-            reloadConfig();
-
-        return this.config;
-    }
-
     public void saveConfig() {
         if (this.config == null || configFile == null)
             return;
