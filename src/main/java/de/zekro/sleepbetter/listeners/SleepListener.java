@@ -10,10 +10,10 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 
 public class SleepListener implements Listener {
 
-    private final int REQUIRED_PLAYER_COUNT = 2;
+    private double sleepPart;
+    private int requiredPlayerCount;
 
     private SleepBetter plugin;
-    private double sleepPart;
     private int playersInBed;
     private boolean showWakeupMessage = true;
 
@@ -21,6 +21,7 @@ public class SleepListener implements Listener {
         this.plugin = plugin;
 
         this.sleepPart = this.plugin.getConfig().getDouble("part");
+        this.requiredPlayerCount = this.plugin.getConfig().getInt("requiredPlayerCount");
     }
 
     private int getPlayersInBedNeeded(World world) {
@@ -43,7 +44,7 @@ public class SleepListener implements Listener {
 
         this.playersInBed++;
 
-        if (playersInWorld < REQUIRED_PLAYER_COUNT)
+        if (playersInWorld < this.requiredPlayerCount)
             return;
 
         int playersInBedNeeded = getPlayersInBedNeeded(world);
@@ -90,7 +91,7 @@ public class SleepListener implements Listener {
         this.playersInBed--;
         World world = e.getPlayer().getWorld();
 
-        if (world.getPlayers().size() < REQUIRED_PLAYER_COUNT)
+        if (world.getPlayers().size() < this.requiredPlayerCount)
             return;
 
         if (this.showWakeupMessage) {
